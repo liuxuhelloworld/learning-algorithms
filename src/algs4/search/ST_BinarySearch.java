@@ -70,7 +70,7 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
     }
 
     /**
-     * the number of keys less than key (>=0, <=N)
+     * return the number of keys less than key (>=0, <=N)
      * @param key
      * @return
      */
@@ -129,13 +129,14 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
     @Override
     public Iterable<K> keys(K lo, K hi) {
         int i = rank(lo), j = rank(hi);
-        if (!searchHit(lo, i)) {
-            i++;
-        }
 
         Queue<K> q = new Queue<>();
-        for (int k = i; k <=j; k++) {
+        for (int k = i; k < j; k++) {
             q.enqueue(keys[k]);
+        }
+
+        if (searchHit(hi, j)) {
+            q.enqueue(hi);
         }
         return q;
     }
