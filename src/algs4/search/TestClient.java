@@ -25,8 +25,13 @@ public class TestClient {
         System.out.println("floor of maxkey = " + ost.floor(ost.max()));
         System.out.println("ceiling of minkey = " + ost.ceiling(ost.min()));
         System.out.println("ceiling of maxkey = " + ost.ceiling(ost.max()));
-        System.out.println("contains liuxu? = " + ost.contains("liuxu"));
+        String mid = ost.select(ost.size()/2);
+        System.out.println("floor of midkey = " + ost.floor(mid));
+        System.out.println("ceiling of midkey = " + ost.ceiling(mid));
+        System.out.println("contains 'liuxu'? = " + ost.contains("liuxu"));
         System.out.println("rank of 'liuxu' = " + ost.rank("liuxu"));
+        System.out.println("floor of 'liuxu' = " + ost.floor("liuxu"));
+        System.out.println("ceiling of 'liuxu' = " + ost.ceiling("liuxu"));
         System.out.println("select the rank of 'liuxu' = " + ost.select(ost.rank("liuxu")));
         ost.deleteMin();
         ost.deleteMax();
