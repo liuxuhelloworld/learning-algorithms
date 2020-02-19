@@ -19,6 +19,9 @@ public class ST_SequentialSearch<K, V> implements ST<K, V> {
 
     @Override
     public void put(K key, V val) {
+        if (key == null) {
+            return ;
+        }
         for (Node p = first; p != null; p = p.next) {
             if (key.equals(p.key)) {
                 p.val = val;
@@ -30,6 +33,9 @@ public class ST_SequentialSearch<K, V> implements ST<K, V> {
 
     @Override
     public V get(K key) {
+        if (key == null) {
+            return null;
+        }
         for (Node p = first; p != null; p = p.next) {
             if (key.equals(p.key)) {
                 return p.val;
@@ -42,7 +48,9 @@ public class ST_SequentialSearch<K, V> implements ST<K, V> {
     public int size() {
         int cnt = 0;
         for (Node p = first; p != null; p = p.next) {
-            cnt++;
+            if (p.val != null) {
+                cnt++;
+            }
         }
         return cnt;
     }
@@ -51,7 +59,9 @@ public class ST_SequentialSearch<K, V> implements ST<K, V> {
     public Iterable<K> keys() {
         Queue<K> q = new Queue<>();
         for (Node p = first; p != null; p = p.next) {
-            q.enqueue(p.key);
+            if (p.val != null) {
+                q.enqueue(p.key);
+            }
         }
         return q;
     }

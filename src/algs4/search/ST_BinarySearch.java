@@ -28,7 +28,13 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public void put(K key, V val) {
-        assert key != null;
+        if (key == null) {
+            return;
+        }
+        if (val == null) {
+            delete(key);
+            return;
+        }
 
         int i = rank(key);
         if (searchHit(key, i)) {
@@ -50,7 +56,9 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public V get(K key) {
-        assert key != null;
+        if (key == null) {
+            return null;
+        }
 
         int i = rank(key);
         if (searchHit(key, i)) {
@@ -61,7 +69,9 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public boolean contains(K key) {
-        assert key != null;
+        if (key == null) {
+            return false;
+        }
 
         int i = rank(key);
         return searchHit(key, i);
@@ -69,7 +79,9 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public void delete(K key) {
-        assert key != null;
+        if (key == null) {
+            return;
+        }
 
         int i = rank(key);
         if (searchHit(key, i)) {
@@ -99,7 +111,9 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
      */
     @Override
     public int rank(K key) {
-        assert key != null;
+        if (key == null) {
+            return -1;
+        }
 
         int lo = 0, hi = N-1;
         while (lo <= hi) {
@@ -131,7 +145,9 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public K floor(K key) {
-        assert key != null;
+        if (key == null) {
+            return null;
+        }
 
         int i = rank(key);
         if (searchHit(key, i)) {
@@ -146,7 +162,9 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public K ceiling(K key) {
-        assert key != null;
+        if (key == null) {
+            return null;
+        }
 
         int i = rank(key);
         if (i == N && N == keys.length) {
@@ -157,12 +175,17 @@ public class ST_BinarySearch<K extends Comparable<K>, V> implements OrderedST<K,
 
     @Override
     public K select(int k) {
+        if (k < 0 || k >= N) {
+            return null;
+        }
         return keys[k];
     }
 
     @Override
     public Iterable<K> keys(K lo, K hi) {
-        assert lo != null && hi != null;
+        if (lo == null || hi == null) {
+            return null;
+        }
 
         int i = rank(lo), j = rank(hi);
 
