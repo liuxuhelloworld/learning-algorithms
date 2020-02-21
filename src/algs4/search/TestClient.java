@@ -4,9 +4,7 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class TestClient {
-    public static void testSequentialSearch() {
-        ST<String, Integer> st = new ST_SequentialSearch<>();
-
+    public static void testST(ST<String, Integer> st) {
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
             st.put(key, i);
@@ -17,7 +15,7 @@ public class TestClient {
         }
     }
 
-    private static void testBinarySearchBasics(OrderedST<String, Integer> ost) {
+    private static void testOrderedSTBasics(OrderedST<String, Integer> ost) {
         System.out.println("size = " + ost.size());
         System.out.println("minkey = " + ost.min());
         System.out.println("maxkey = " + ost.max());
@@ -33,15 +31,13 @@ public class TestClient {
         System.out.println("floor of 'liuxu' = " + ost.floor("liuxu"));
         System.out.println("ceiling of 'liuxu' = " + ost.ceiling("liuxu"));
         System.out.println("select the rank of 'liuxu' = " + ost.select(ost.rank("liuxu")));
+        ost.delete(mid);
         ost.deleteMin();
         ost.deleteMax();
     }
 
-    public static void testBinarySerach() {
-        OrderedST<String, Integer> ost = new ST_BinarySearch<>(16);
-
-        // System.out.println("basic test of ordered symbol table (empty):");
-        // testBinarySearchBasics(ost);
+    private static void testOrderedST(OrderedST<String, Integer> ost) {
+        testOrderedSTBasics(ost);
 
         for (int i = 0; !StdIn.isEmpty(); i++) {
             String key = StdIn.readString();
@@ -52,12 +48,12 @@ public class TestClient {
             StdOut.println(s + " " + ost.get(s));
         }
 
-        System.out.println("basic test of ordered symbol table:");
-        testBinarySearchBasics(ost);
+        testOrderedSTBasics(ost);
     }
 
     public static void main(String[] args) {
-        //testSequentialSearch();
-        testBinarySerach();
+        // OrderedST<String, Integer> ost = new ST_BinarySearch<>(16);
+        OrderedST<String, Integer> ost = new ST_BST<>();
+        testOrderedST(ost);
     }
 }

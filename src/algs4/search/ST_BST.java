@@ -11,10 +11,10 @@ public class ST_BST<K extends Comparable<K>, V> implements OrderedST<K, V> {
         Node left, right;
         int N;
 
-        public Node(K key, V val, int N) {
+        public Node(K key, V val) {
             this.key = key;
             this.val = val;
-            this.N = N;
+            this.N = 1;
         }
     }
 
@@ -33,16 +33,14 @@ public class ST_BST<K extends Comparable<K>, V> implements OrderedST<K, V> {
 
     private Node put(Node p, K key, V val) {
         if (p == null) {
-            return new Node(key, val, 1);
+            return new Node(key, val);
         }
 
         int cmp = key.compareTo(p.key);
         if (cmp < 0) {
             p.left = put(p.left, key, val);
-            //p.N += 1;
         } else if (cmp > 0) {
             p.right = put(p.right, key, val);
-            //p.N += 1;
         } else {
             p.val = val;
         }
@@ -312,8 +310,8 @@ public class ST_BST<K extends Comparable<K>, V> implements OrderedST<K, V> {
 
             Node q = p;
             p = min(q.right);
+            p.right = deleteMin(q.right);
             p.left = q.left;
-            q.right = deleteMin(q.right);
         }
         p.N = size(p.left) + 1 + size(p.right);
         return p;
@@ -346,7 +344,7 @@ public class ST_BST<K extends Comparable<K>, V> implements OrderedST<K, V> {
             return null;
         }
         if (p.right == null) {
-            return p.right;
+            return p.left;
         }
         p.right = deleteMax(p.right);
         p.N = size(p.left) + 1 + size(p.right);
