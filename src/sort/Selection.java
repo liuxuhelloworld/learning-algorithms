@@ -1,19 +1,18 @@
-package algs4.sort;
+package sort;
 
 import edu.princeton.cs.algs4.In;
 
-public class Shell {
+public class Selection {
     public static void sort(Comparable[] a) {
         int N = a.length;
-
-        int h = 1;
-        while (h < N/3) {
-            h = 3 * h + 1; // 1, 4, 13, 40, 121,...
-        }
-
-        while (h >= 1) {
-            Insertion.stepSort(a, h);
-            h = h / 3;
+        for (int i = 0; i < N; i++) {
+            int min = i;
+            for (int j = i + 1; j < N; j++) {
+                if (Util.less(a[j], a[min])) {
+                    min = j;
+                }
+            }
+            Util.exch(a, i, min);
         }
     }
 

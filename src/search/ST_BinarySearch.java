@@ -1,6 +1,6 @@
-package algs4.search;
+package search;
 
-import algs4.collections.Queue;
+import collections.Queue;
 
 import java.util.Arrays;
 

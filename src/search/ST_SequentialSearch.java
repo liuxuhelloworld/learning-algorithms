@@ -1,6 +1,6 @@
-package algs4.search;
+package search;
 
-import algs4.collections.Queue;
+import collections.Queue;
 
 public class ST_SequentialSearch<K, V> implements ST<K, V> {
     private Node first;

@@ -1,4 +1,4 @@
-package algs4.unionfind;
+package unionfind;
 
 import edu.princeton.cs.algs4.*;
 

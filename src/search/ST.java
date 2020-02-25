@@ -1,4 +1,4 @@
-package algs4.search;
+package search;
 
 public interface ST<K, V> {
     void put(K key, V val);

@@ -1,4 +1,4 @@
-package algs4.sort;
+package sort;
 
 import edu.princeton.cs.algs4.In;
 

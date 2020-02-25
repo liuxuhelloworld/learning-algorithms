@@ -1,6 +1,6 @@
-package algs4.search;
+package search;
 
-import algs4.collections.Queue;
+import collections.Queue;
 
 public class ST_BST<K extends Comparable<K>, V> implements OrderedST<K, V> {
     private Node root;

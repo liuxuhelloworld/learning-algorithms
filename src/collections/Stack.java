@@ -1,4 +1,4 @@
-package algs4.collections;
+package collections;
 
 import java.util.Iterator;
 

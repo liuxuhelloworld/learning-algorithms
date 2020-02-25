@@ -1,4 +1,4 @@
-package algs4.search;
+package search;
 
 public interface OrderedST<K extends Comparable<K>, V> {
     void put(K key, V val);
