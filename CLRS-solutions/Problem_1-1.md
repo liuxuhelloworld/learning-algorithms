@@ -15,3 +15,4 @@ For each function f(n) and time t in the following table, determine the largest 
 | $2^n$     | $19$       | $25$                | $31$                  | $36$                     | $41$                        | $44$                         | $51$                             |
 | $n!$      | $9$        | $11$                | $12$                  | $13$                     | $15$                        | $16$                         | $17$                             |
 
+[code in here](https://github.com/liuxuhelloworld/learning-algorithms/blob/master/src/solutions/clrs/Problem1_1.java)
